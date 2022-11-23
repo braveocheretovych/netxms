@@ -427,7 +427,15 @@ void ServiceEntry::getListFromJSON(const TCHAR *path, StringList *result)
  */
 void ServiceEntry::getParamsFromText(StringList *params, NXCPMessage *response)
 {
-   StringList *dataLines = String::split(m_content.text, _tcslen(m_content.text), _T("\n"));
+   StringList *dataLines;
+   if (_tcschr(m_content.text, _T('\r')) != nullptr)
+   {
+      dataLines = String::split(m_content.text, _tcslen(m_content.text), _T("\r\n"));
+   }
+   else
+   {
+      dataLines = String::split(m_content.text, _tcslen(m_content.text), _T("\n"));
+   }
    uint32_t fieldId = VID_PARAM_LIST_BASE;
    int resultCount = 0;
    for (int i = 0; i < params->size(); i++)
