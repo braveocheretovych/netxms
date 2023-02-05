@@ -26,6 +26,7 @@ import org.netxms.base.NXCPCodes;
 import org.netxms.base.NXCPMessage;
 import org.netxms.client.NXCSession;
 import org.netxms.client.constants.AgentCacheMode;
+import org.netxms.client.constants.ObjectPollType;
 import org.netxms.client.objects.interfaces.AutoBindObject;
 import org.netxms.client.objects.interfaces.PollingTarget;
 import org.netxms.client.objects.interfaces.ZoneMember;
@@ -236,8 +237,25 @@ public class Cluster extends DataCollectionTarget implements ZoneMember, Polling
       return autoBindFilter;
    }
 
+   /**
+    * @see org.netxms.client.objects.interfaces.AutoBindObject#getAutoBindFlags()
+    */
+   @Override
+   public int getAutoBindFlags()
+   {
+      return autoBindFlags;
+   }
 
-   /* (non-Javadoc)
+   /**
+    * @see org.netxms.client.objects.interfaces.PollingTarget#isPollSupported(org.netxms.client.constants.ObjectPollType)
+    */
+   @Override
+   public boolean isPollSupported(ObjectPollType pollType)
+   {
+      return (pollType == ObjectPollType.AUTOBIND) || (pollType == ObjectPollType.CONFIGURATION_NORMAL) || (pollType == ObjectPollType.INSTANCE_DISCOVERY) || (pollType == ObjectPollType.STATUS);
+   }
+
+   /**
     * @see org.netxms.client.objects.AbstractObject#getStrings()
     */
    @Override
@@ -246,11 +264,5 @@ public class Cluster extends DataCollectionTarget implements ZoneMember, Polling
       Set<String> strings = super.getStrings();
       addString(strings, autoBindFilter);
       return strings;
-   }
-
-   @Override
-   public int getAutoBindFlags()
-   {
-      return autoBindFlags;
    }
 }

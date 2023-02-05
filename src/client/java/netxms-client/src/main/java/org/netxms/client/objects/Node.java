@@ -20,6 +20,7 @@ package org.netxms.client.objects;
 
 import org.netxms.base.NXCPMessage;
 import org.netxms.client.NXCSession;
+import org.netxms.client.constants.ObjectPollType;
 
 /**
  * This class represents NetXMS NODE objects.
@@ -109,5 +110,14 @@ public class Node extends AbstractNode
    public boolean canUseEtherNetIP()
    {
       return true;
+   }
+
+   /**
+    * @see org.netxms.client.objects.interfaces.PollingTarget#isPollSupported(org.netxms.client.constants.ObjectPollType)
+    */
+   @Override
+   public boolean isPollSupported(ObjectPollType pollType)
+   {
+      return (pollType != ObjectPollType.UNKNOWN) && (pollType != ObjectPollType.AUTOBIND);
    }
 }

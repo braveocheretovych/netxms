@@ -1,6 +1,7 @@
 package org.netxms.client.objects.interfaces;
 
 import org.netxms.client.constants.AgentCacheMode;
+import org.netxms.client.constants.ObjectPollType;
 
 /**
  * Common interface for all objects that can be polled
@@ -76,4 +77,12 @@ public interface PollingTarget
     * @return true if this object can use EtherNet/IP for communications
     */
    public boolean canUseEtherNetIP();
+
+   /**
+    * Check if given poll type is supported.
+    *
+    * @param pollType poll type
+    * @return true if given poll type is supported
+    */
+   public boolean isPollSupported(ObjectPollType pollType);
 }

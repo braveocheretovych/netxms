@@ -1,6 +1,6 @@
 /**
  * NetXMS - open source network management system
- * Copyright (C) 2003-2022 Victor Kirhenshtein
+ * Copyright (C) 2003-2023 Victor Kirhenshtein
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,11 +30,10 @@ import org.netxms.client.datacollection.DciValue;
  * Base class for all data collection targets
  */
 public class DataCollectionTarget extends GenericObject
-{   
-   public static final int DCF_DISABLE_STATUS_POLL    = 0x00000001;
-   public static final int DCF_DISABLE_CONF_POLL      = 0x00000002;
-   public static final int DCF_DISABLE_DATA_COLLECT   = 0x00000004;
-   public static final int DCF_LOCATION_CHANGE_EVENT  = 0x00000008;
+{
+   // Data collection target flags
+   public static final int DCF_DISABLE_DATA_COLLECTION = 0x00000004;
+   public static final int DCF_LOCATION_CHANGE_EVENT   = 0x00000008;
 
    public static final int DCSF_UNREACHABLE          = 0x000000001;
    public static final int DCSF_NETWORK_PATH_PROBLEM = 0x000000002;

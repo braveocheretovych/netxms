@@ -255,11 +255,17 @@
 #define DBF_SHOW_AS_OBJECT_VIEW        0x00010000
 
 /**
+ * Pollable flags (common for all ojects inheriting Pollable)
+ */
+#define PF_DISABLE_STATUS_POLL         0x00000001
+#define PF_DISABLE_CONFIGURATION_POLL  0x00000002
+#define PF_DISABLE_AUTOBIND_POLL       0x00001000
+#define PF_DISABLE_INSTANCE_POLL       0x00002000
+
+/**
  * Data Collection Target flags (lower bits of flags field)
  */
-#define DCF_DISABLE_STATUS_POLL        0x00000001
-#define DCF_DISABLE_CONF_POLL          0x00000002
-#define DCF_DISABLE_DATA_COLLECT       0x00000004
+#define DCF_DISABLE_DATA_COLLECTION    0x00000004
 #define DCF_LOCATION_CHANGE_EVENT      0x00000008
 
 /**

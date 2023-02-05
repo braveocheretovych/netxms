@@ -1,6 +1,6 @@
 /**
  * NetXMS - open source network management system
- * Copyright (C) 2003-2022 Victor Kirhenshtein
+ * Copyright (C) 2003-2023 Victor Kirhenshtein
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,10 +32,10 @@ import org.eclipse.swt.widgets.Label;
 import org.netxms.client.NXCObjectModificationData;
 import org.netxms.client.NXCSession;
 import org.netxms.client.constants.AgentCacheMode;
+import org.netxms.client.constants.ObjectPollType;
 import org.netxms.client.objects.AbstractNode;
 import org.netxms.client.objects.AbstractObject;
-import org.netxms.client.objects.Container;
-import org.netxms.client.objects.Dashboard;
+import org.netxms.client.objects.DataCollectionTarget;
 import org.netxms.client.objects.interfaces.PollingTarget;
 import org.netxms.nxmc.Registry;
 import org.netxms.nxmc.base.jobs.Job;
@@ -98,7 +98,7 @@ public class Polling extends ObjectPropertyPage
    @Override
    public boolean isVisible()
    {
-      return (object instanceof PollingTarget) && !(object instanceof Container) && !(object instanceof Dashboard);
+      return (object instanceof PollingTarget);
    }
 
    /**
@@ -131,7 +131,7 @@ public class Polling extends ObjectPropertyPage
    		gd.horizontalAlignment = SWT.FILL;
    		gd.grabExcessHorizontalSpace = true;
    		servicePollGroup.setLayoutData(gd);
-   		
+
    		pollerNode = new ObjectSelector(servicePollGroup, SWT.NONE, true);
    		pollerNode.setLabel(i18n.tr("Poller node"));
    		pollerNode.setObjectClass(AbstractNode.class);
@@ -141,7 +141,7 @@ public class Polling extends ObjectPropertyPage
    		gd.horizontalAlignment = SWT.FILL;
    		gd.grabExcessHorizontalSpace = true;
    		pollerNode.setLayoutData(gd);
-   		
+
    		Label label = new Label(servicePollGroup, SWT.WRAP);
    		label.setText(i18n.tr("All network services of this node will be polled from poller node specified here, if not overriden by network service settings."));
    		gd = new GridData();
@@ -169,7 +169,9 @@ public class Polling extends ObjectPropertyPage
 		optionsGroup.setLayoutData(gd);
 
       if (pollingTarget.canHaveAgent())
+      {
 		   addFlag(optionsGroup, AbstractNode.NF_DISABLE_NXCP, i18n.tr("Disable usage of NetXMS &agent for all polls"));
+      }
       if (pollingTarget.canHaveInterfaces())
 		{
    		addFlag(optionsGroup, AbstractNode.NF_DISABLE_SNMP, i18n.tr("Disable usage of &SNMP for all polls"));
@@ -177,20 +179,43 @@ public class Polling extends ObjectPropertyPage
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_SSH, i18n.tr("Disable SS&H usage for all polls"));
 		}
       if (pollingTarget.canUseEtherNetIP())
+      {
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_ETHERNET_IP, i18n.tr("Disable usage of &EtherNet/IP for all polls"));
-		addFlag(optionsGroup, AbstractNode.DCF_DISABLE_STATUS_POLL, i18n.tr("Disable s&tatus polling"));
+      }
+      if (pollingTarget.isPollSupported(ObjectPollType.STATUS))
+      {
+         addFlag(optionsGroup, AbstractNode.PF_DISABLE_STATUS_POLL, i18n.tr("Disable s&tatus polling"));
+      }
       if (pollingTarget.canHaveInterfaces())
+      {
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_8021X_STATUS_POLL, "Disable &802.1x port state checking during status poll");
-		addFlag(optionsGroup, AbstractNode.DCF_DISABLE_CONF_POLL, i18n.tr("Disable &configuration polling"));
+      }
+      if (pollingTarget.isPollSupported(ObjectPollType.CONFIGURATION_NORMAL))
+      {
+         addFlag(optionsGroup, AbstractNode.PF_DISABLE_CONFIGURATION_POLL, i18n.tr("Disable &configuration polling"));
+      }
       if (pollingTarget.canHaveInterfaces())
       {
    		addFlag(optionsGroup, AbstractNode.NF_DISABLE_ROUTE_POLL, i18n.tr("Disable &routing table polling"));
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_TOPOLOGY_POLL, i18n.tr("Disable to&pology polling"));
    		addFlag(optionsGroup, AbstractNode.NF_DISABLE_DISCOVERY_POLL, i18n.tr("Disable network &discovery polling"));
       }
-		addFlag(optionsGroup, AbstractNode.DCF_DISABLE_DATA_COLLECT, i18n.tr("Disable data c&ollection"));
+      if (pollingTarget.isPollSupported(ObjectPollType.AUTOBIND))
+      {
+         addFlag(optionsGroup, AbstractNode.PF_DISABLE_AUTOBIND_POLL, "Disable autobind polling");
+      }
+      if (pollingTarget.isPollSupported(ObjectPollType.INSTANCE_DISCOVERY))
+      {
+         addFlag(optionsGroup, AbstractNode.PF_DISABLE_INSTANCE_POLL, "Disable instance discovery polling");
+      }
+      if (pollingTarget instanceof DataCollectionTarget)
+      {
+         addFlag(optionsGroup, AbstractNode.DCF_DISABLE_DATA_COLLECTION, i18n.tr("Disable data c&ollection"));
+      }
       if (pollingTarget.canHaveAgent())
+      {
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_PERF_COUNT, "Disable reading of &Windows performance counters metadata");
+      }
 
 		/* use ifXTable */
       if (pollingTarget.canHaveInterfaces())
@@ -265,7 +290,7 @@ public class Polling extends ObjectPropertyPage
 		flagButtons.add(button);
 		flagValues.add(value);
 	}
-	
+
 	/**
 	 * Collect new node flags from checkboxes
 	 *  

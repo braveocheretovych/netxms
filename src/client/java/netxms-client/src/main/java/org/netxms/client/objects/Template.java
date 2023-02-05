@@ -23,6 +23,7 @@ import org.netxms.base.NXCPCodes;
 import org.netxms.base.NXCPMessage;
 import org.netxms.client.NXCSession;
 import org.netxms.client.constants.AgentCacheMode;
+import org.netxms.client.constants.ObjectPollType;
 import org.netxms.client.objects.interfaces.AutoBindObject;
 import org.netxms.client.objects.interfaces.PollingTarget;
 
@@ -209,5 +210,14 @@ public class Template extends GenericObject implements PollingTarget
    public boolean canUseEtherNetIP()
    {
       return false;
+   }
+
+   /**
+    * @see org.netxms.client.objects.interfaces.PollingTarget#isPollSupported(org.netxms.client.constants.ObjectPollType)
+    */
+   @Override
+   public boolean isPollSupported(ObjectPollType pollType)
+   {
+      return pollType == ObjectPollType.AUTOBIND;
    }
 }

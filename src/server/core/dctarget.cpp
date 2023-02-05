@@ -57,7 +57,7 @@ extern ThreadPool *g_pollerThreadPool;
 /**
  * Default constructor
  */
-DataCollectionTarget::DataCollectionTarget(uint32_t pollableFlags) : super(), Pollable(this, pollableFlags | Pollable::INSTANCE_DISCOVERY ),
+DataCollectionTarget::DataCollectionTarget(uint32_t pollableFlags) : super(), Pollable(this, pollableFlags | Pollable::INSTANCE_DISCOVERY),
          m_deletedItems(0, 32), m_deletedTables(0, 32), m_geoAreas(0, 16), m_proxyLoadFactor(0)
 {
    m_geoLocationControlMode = GEOLOCATION_NO_CONTROL;
@@ -69,7 +69,7 @@ DataCollectionTarget::DataCollectionTarget(uint32_t pollableFlags) : super(), Po
 /**
  * Constructor for creating new data collection capable objects
  */
-DataCollectionTarget::DataCollectionTarget(const TCHAR *name, uint32_t pollableFlags) : super(name), Pollable(this, pollableFlags | Pollable::INSTANCE_DISCOVERY ),
+DataCollectionTarget::DataCollectionTarget(const TCHAR *name, uint32_t pollableFlags) : super(name), Pollable(this, pollableFlags | Pollable::INSTANCE_DISCOVERY),
          m_deletedItems(0, 32), m_deletedTables(0, 32), m_geoAreas(0, 16), m_proxyLoadFactor(0)
 {
    m_geoLocationControlMode = GEOLOCATION_NO_CONTROL;
@@ -2136,7 +2136,7 @@ bool DataCollectionTarget::lockForInstanceDiscoveryPoll()
    lockProperties();
    if (!m_isDeleted && !m_isDeleteInitiated &&
        (m_status != STATUS_UNMANAGED) &&
-       (!(m_flags & DCF_DISABLE_CONF_POLL)) &&
+       !(m_flags & PF_DISABLE_INSTANCE_POLL) &&
        (m_runtimeFlags & ODF_CONFIGURATION_POLL_PASSED) &&
        (m_instanceDiscoveryPending || (static_cast<uint32_t>(time(nullptr) - m_instancePollState.getLastCompleted()) > getCustomAttributeAsUInt32(_T("SysConfig:DataCollection.InstancePollingInterval"), g_instancePollingInterval))))
    {

@@ -25,6 +25,7 @@ import org.netxms.base.NXCPCodes;
 import org.netxms.base.NXCPMessage;
 import org.netxms.client.NXCSession;
 import org.netxms.client.constants.AgentCacheMode;
+import org.netxms.client.constants.ObjectPollType;
 import org.netxms.client.objects.interfaces.PollingTarget;
 import org.netxms.client.sensor.configs.DlmsConfig;
 import org.netxms.client.sensor.configs.LoraWanConfig;
@@ -412,5 +413,14 @@ public class Sensor extends DataCollectionTarget implements PollingTarget
    public boolean canUseEtherNetIP()
    {
       return false;
+   }
+
+   /**
+    * @see org.netxms.client.objects.interfaces.PollingTarget#isPollSupported(org.netxms.client.constants.ObjectPollType)
+    */
+   @Override
+   public boolean isPollSupported(ObjectPollType pollType)
+   {
+      return (pollType == ObjectPollType.CONFIGURATION_NORMAL) || (pollType == ObjectPollType.INSTANCE_DISCOVERY) || (pollType == ObjectPollType.STATUS);
    }
 }

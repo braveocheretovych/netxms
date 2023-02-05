@@ -22,6 +22,7 @@ import java.util.Set;
 import org.netxms.base.NXCPCodes;
 import org.netxms.base.NXCPMessage;
 import org.netxms.client.NXCSession;
+import org.netxms.client.constants.ObjectPollType;
 
 /**
  * Business service representation
@@ -107,5 +108,14 @@ public class BusinessServicePrototype extends BaseBusinessService
       addString(strings, instanceDiscoveryData);
       addString(strings, instanceDiscoveryFilter);
       return strings;
+   }
+
+   /**
+    * @see org.netxms.client.objects.interfaces.PollingTarget#isPollSupported(org.netxms.client.constants.ObjectPollType)
+    */
+   @Override
+   public boolean isPollSupported(ObjectPollType pollType)
+   {
+      return (pollType == ObjectPollType.INSTANCE_DISCOVERY);
    }
 }

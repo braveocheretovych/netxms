@@ -983,7 +983,7 @@ NXSL_METHOD_DEFINITION(DataCollectionTarget, applyTemplate)
  */
 NXSL_METHOD_DEFINITION(DataCollectionTarget, enableConfigurationPolling)
 {
-   return ChangeFlagMethod(object, argv[0], result, DCF_DISABLE_CONF_POLL, true);
+   return ChangeFlagMethod(object, argv[0], result, PF_DISABLE_CONFIGURATION_POLL, true);
 }
 
 /**
@@ -991,7 +991,7 @@ NXSL_METHOD_DEFINITION(DataCollectionTarget, enableConfigurationPolling)
  */
 NXSL_METHOD_DEFINITION(DataCollectionTarget, enableDataCollection)
 {
-   return ChangeFlagMethod(object, argv[0], result, DCF_DISABLE_DATA_COLLECT, true);
+   return ChangeFlagMethod(object, argv[0], result, DCF_DISABLE_DATA_COLLECTION, true);
 }
 
 /**
@@ -999,7 +999,7 @@ NXSL_METHOD_DEFINITION(DataCollectionTarget, enableDataCollection)
  */
 NXSL_METHOD_DEFINITION(DataCollectionTarget, enableStatusPolling)
 {
-   return ChangeFlagMethod(object, argv[0], result, DCF_DISABLE_STATUS_POLL, true);
+   return ChangeFlagMethod(object, argv[0], result, PF_DISABLE_STATUS_POLL, true);
 }
 
 /**

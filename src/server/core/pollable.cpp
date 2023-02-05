@@ -1,6 +1,6 @@
 /*
 ** NetXMS - Network Management System
-** Copyright (C) 2003-2022 Raden Solutions
+** Copyright (C) 2003-2023 Raden Solutions
 **
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -85,7 +85,7 @@ bool Pollable::lockForStatusPoll()
             m_this->m_runtimeFlags &= ~ODF_FORCE_STATUS_POLL;
       }
       else if ((m_this->m_status != STATUS_UNMANAGED) &&
-               !(m_this->m_flags & DCF_DISABLE_STATUS_POLL) &&
+               !(m_this->m_flags & PF_DISABLE_STATUS_POLL) &&
                !(m_this->m_runtimeFlags & ODF_CONFIGURATION_POLL_PENDING) &&
                (static_cast<uint32_t>(time(nullptr) - m_statusPollState.getLastCompleted()) > m_this->getCustomAttributeAsUInt32(_T("SysConfig:Objects.StatusPollingInterval"), g_statusPollingInterval)))
       {
@@ -133,7 +133,7 @@ bool Pollable::lockForConfigurationPoll()
             m_this->m_runtimeFlags &= ~ODF_FORCE_CONFIGURATION_POLL;
       }
       else if ((m_this->m_status != STATUS_UNMANAGED) &&
-               (!(m_this->m_flags & DCF_DISABLE_CONF_POLL)) &&
+               (!(m_this->m_flags & PF_DISABLE_CONFIGURATION_POLL)) &&
                (static_cast<uint32_t>(time(nullptr) - m_configurationPollState.getLastCompleted()) > m_this->getCustomAttributeAsUInt32(_T("SysConfig:Objects.ConfigurationPollingInterval"), g_configurationPollingInterval)))
       {
          success = m_configurationPollState.schedule();
@@ -267,6 +267,7 @@ bool Pollable::lockForAutobindPoll()
    m_this->lockProperties();
    if (!m_this->m_isDeleted && !m_this->m_isDeleteInitiated &&
        (m_this->m_status != STATUS_UNMANAGED) &&
+       !(m_this->m_flags & PF_DISABLE_AUTOBIND_POLL) &&
        (static_cast<uint32_t>(time(nullptr) - m_autobindPollState.getLastCompleted()) > m_this->getCustomAttributeAsUInt32(_T("SysConfig:Objects.AutobindPollingInterval"), g_autobindPollingInterval)))
    {
       success = m_autobindPollState.schedule();

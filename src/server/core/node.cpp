@@ -2217,7 +2217,7 @@ bool Node::lockForStatusPoll()
             m_runtimeFlags &= ~ODF_FORCE_STATUS_POLL;
       }
       else if ((m_status != STATUS_UNMANAGED) &&
-               !(m_flags & DCF_DISABLE_STATUS_POLL) &&
+               !(m_flags & PF_DISABLE_STATUS_POLL) &&
                (getMyCluster() == nullptr) &&
                !(m_runtimeFlags & ODF_CONFIGURATION_POLL_PENDING) &&
                (static_cast<uint32_t>(time(nullptr) - m_statusPollState.getLastCompleted()) > getCustomAttributeAsUInt32(_T("SysConfig:Objects.StatusPollingInterval"), g_statusPollingInterval)) &&
@@ -2247,7 +2247,7 @@ bool Node::lockForConfigurationPoll()
             m_runtimeFlags &= ~ODF_FORCE_CONFIGURATION_POLL;
       }
       else if ((m_status != STATUS_UNMANAGED) &&
-               !(m_flags & DCF_DISABLE_CONF_POLL) &&
+               !(m_flags & PF_DISABLE_CONFIGURATION_POLL) &&
                (static_cast<uint32_t>(time(nullptr) - m_configurationPollState.getLastCompleted()) > getCustomAttributeAsUInt32(_T("SysConfig:Objects.ConfigurationPollingInterval"), g_configurationPollingInterval)) &&
                !isAgentRestarting() && !isProxyAgentRestarting())
       {
@@ -10876,7 +10876,7 @@ shared_ptr<ComponentTree> Node::getComponents()
  */
 bool Node::isDataCollectionDisabled()
 {
-   return (m_flags & DCF_DISABLE_DATA_COLLECT) != 0;
+   return (m_flags & DCF_DISABLE_DATA_COLLECTION) != 0;
 }
 
 /**

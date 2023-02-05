@@ -123,6 +123,12 @@ public abstract class AbstractObject
 	public static final int PROPAGATE_RELATIVE = 3;
 	public static final int PROPAGATE_TRANSLATED = 4;
 
+   // Common pollable flags
+   public static final int PF_DISABLE_STATUS_POLL        = 0x00000001;
+   public static final int PF_DISABLE_CONFIGURATION_POLL = 0x00000002;
+   public static final int PF_DISABLE_AUTOBIND_POLL      = 0x00001000;
+   public static final int PF_DISABLE_INSTANCE_POLL      = 0x00002000;
+
    private static final Logger logger = LoggerFactory.getLogger(AbstractObject.class);
 
 	@Internal protected NXCSession session = null;

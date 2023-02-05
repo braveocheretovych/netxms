@@ -1,6 +1,6 @@
 /**
  * NetXMS - open source network management system
- * Copyright (C) 2003-2022 Victor Kirhenshtein
+ * Copyright (C) 2003-2023 Victor Kirhenshtein
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,9 @@ import org.eclipse.ui.dialogs.PropertyPage;
 import org.netxms.client.NXCObjectModificationData;
 import org.netxms.client.NXCSession;
 import org.netxms.client.constants.AgentCacheMode;
+import org.netxms.client.constants.ObjectPollType;
 import org.netxms.client.objects.AbstractNode;
+import org.netxms.client.objects.DataCollectionTarget;
 import org.netxms.client.objects.interfaces.PollingTarget;
 import org.netxms.ui.eclipse.jobs.ConsoleJob;
 import org.netxms.ui.eclipse.objectbrowser.widgets.ObjectSelector;
@@ -44,11 +46,11 @@ import org.netxms.ui.eclipse.tools.WidgetHelper;
 import org.netxms.ui.eclipse.widgets.LabeledSpinner;
 
 /**
- * "Polling" property page for nodes
+ * "Polling" property page for objects
  */
 public class ObjectPolling extends PropertyPage
 {
-	private PollingTarget object;
+   private PollingTarget pollingTarget;
 	private ObjectSelector pollerNode;
 	private Button radioIfXTableDefault;
 	private Button radioIfXTableEnable;
@@ -67,18 +69,18 @@ public class ObjectPolling extends PropertyPage
 	protected Control createContents(Composite parent)
 	{
 		Composite dialogArea = new Composite(parent, SWT.NONE);
-		
-		object = (PollingTarget)getElement().getAdapter(PollingTarget.class);
-		
+
+      pollingTarget = getElement().getAdapter(PollingTarget.class);
+
 		GridLayout layout = new GridLayout();
 		layout.verticalSpacing = WidgetHelper.DIALOG_SPACING;
 		layout.marginWidth = 0;
 		layout.marginHeight = 0;
       dialogArea.setLayout(layout);
       GridData gd = new GridData();
-      
+
       /* poller node */
-      if (object.canHavePollerNode())
+      if (pollingTarget.canHavePollerNode())
       {
          Group servicePollGroup = new Group(dialogArea, SWT.NONE);
          servicePollGroup.setText(Messages.get().NodePolling_GroupNetSrv);
@@ -90,17 +92,17 @@ public class ObjectPolling extends PropertyPage
    		gd.horizontalAlignment = SWT.FILL;
    		gd.grabExcessHorizontalSpace = true;
    		servicePollGroup.setLayoutData(gd);
-   		
+
    		pollerNode = new ObjectSelector(servicePollGroup, SWT.NONE, true);
    		pollerNode.setLabel(Messages.get().NodePolling_PollerNode);
    		pollerNode.setObjectClass(AbstractNode.class);
    		pollerNode.setEmptySelectionName(Messages.get().NodePolling_EmptySelectionServer);
-   		pollerNode.setObjectId(object.getPollerNodeId());
+   		pollerNode.setObjectId(pollingTarget.getPollerNodeId());
    		gd = new GridData();
    		gd.horizontalAlignment = SWT.FILL;
    		gd.grabExcessHorizontalSpace = true;
    		pollerNode.setLayoutData(gd);
-   		
+
    		Label label = new Label(servicePollGroup, SWT.WRAP);
    		label.setText(Messages.get().NodePolling_PollerNodeDescription);
    		gd = new GridData();
@@ -109,11 +111,11 @@ public class ObjectPolling extends PropertyPage
       }
 
       /* poll count */
-      if (object instanceof AbstractNode)
+      if (pollingTarget instanceof AbstractNode)
       {
          pollCount = new LabeledSpinner(dialogArea, SWT.NONE);
          pollCount.setLabel("Required poll count for status change");
-         pollCount.setSelection(((AbstractNode)object).getRequredPollCount());
+         pollCount.setSelection(((AbstractNode)pollingTarget).getRequredPollCount());
       }
 
 		/* options */
@@ -127,32 +129,57 @@ public class ObjectPolling extends PropertyPage
 		gd.grabExcessHorizontalSpace = true;
 		optionsGroup.setLayoutData(gd);
 
-      if (object.canHaveAgent())
+      if (pollingTarget.canHaveAgent())
+      {
 		   addFlag(optionsGroup, AbstractNode.NF_DISABLE_NXCP, Messages.get().NodePolling_OptDisableAgent);
-      if (object.canHaveInterfaces())
+      }
+      if (pollingTarget.canHaveInterfaces())
 		{
    		addFlag(optionsGroup, AbstractNode.NF_DISABLE_SNMP, Messages.get().NodePolling_OptDisableSNMP);
    		addFlag(optionsGroup, AbstractNode.NF_DISABLE_ICMP, Messages.get().NodePolling_OptDisableICMP);
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_SSH, "Disable SS&H usage for all polls");
 		}
-      if (object.canUseEtherNetIP())
+      if (pollingTarget.canUseEtherNetIP())
+      {
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_ETHERNET_IP, Messages.get().NodePolling_OptDisableEtherNetIP);
-		addFlag(optionsGroup, AbstractNode.DCF_DISABLE_STATUS_POLL, Messages.get().NodePolling_OptDisableStatusPoll);
-      if (object.canHaveInterfaces())
+      }
+      if (pollingTarget.isPollSupported(ObjectPollType.STATUS))
+      {
+         addFlag(optionsGroup, AbstractNode.PF_DISABLE_STATUS_POLL, Messages.get().NodePolling_OptDisableStatusPoll);
+      }
+      if (pollingTarget.canHaveInterfaces())
+      {
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_8021X_STATUS_POLL, "Disable &802.1x port state checking during status poll");
-		addFlag(optionsGroup, AbstractNode.DCF_DISABLE_CONF_POLL, Messages.get().NodePolling_OptDisableConfigPoll);
-      if (object.canHaveInterfaces())
+      }
+      if (pollingTarget.isPollSupported(ObjectPollType.CONFIGURATION_NORMAL))
+      {
+         addFlag(optionsGroup, AbstractNode.PF_DISABLE_CONFIGURATION_POLL, Messages.get().NodePolling_OptDisableConfigPoll);
+      }
+      if (pollingTarget.canHaveInterfaces())
       {
    		addFlag(optionsGroup, AbstractNode.NF_DISABLE_ROUTE_POLL, Messages.get().NodePolling_OptDisableRTPoll);
    		addFlag(optionsGroup, AbstractNode.NF_DISABLE_TOPOLOGY_POLL, Messages.get().NodePolling_OptDisableTopoPoll);
    		addFlag(optionsGroup, AbstractNode.NF_DISABLE_DISCOVERY_POLL, Messages.get().NodePolling_OptDisableDiscoveryPoll);
       }
-		addFlag(optionsGroup, AbstractNode.DCF_DISABLE_DATA_COLLECT, Messages.get().NodePolling_OptDisableDataCollection);
-      if (object.canHaveAgent())
+      if (pollingTarget.isPollSupported(ObjectPollType.AUTOBIND))
+      {
+         addFlag(optionsGroup, AbstractNode.PF_DISABLE_AUTOBIND_POLL, "Disable autobind polling");
+      }
+      if (pollingTarget.isPollSupported(ObjectPollType.INSTANCE_DISCOVERY))
+      {
+         addFlag(optionsGroup, AbstractNode.PF_DISABLE_INSTANCE_POLL, "Disable instance discovery polling");
+      }
+      if (pollingTarget instanceof DataCollectionTarget)
+      {
+         addFlag(optionsGroup, AbstractNode.DCF_DISABLE_DATA_COLLECTION, Messages.get().NodePolling_OptDisableDataCollection);
+      }
+      if (pollingTarget.canHaveAgent())
+      {
          addFlag(optionsGroup, AbstractNode.NF_DISABLE_PERF_COUNT, "Disable reading of &Windows performance counters metadata");
+      }
 
 		/* use ifXTable */
-      if (object.canHaveInterfaces())
+      if (pollingTarget.canHaveInterfaces())
 		{
    		Group ifXTableGroup = new Group(dialogArea, SWT.NONE);
    		ifXTableGroup.setText(Messages.get().NodePolling_GroupIfXTable);
@@ -168,19 +195,19 @@ public class ObjectPolling extends PropertyPage
    		
    		radioIfXTableDefault = new Button(ifXTableGroup, SWT.RADIO);
    		radioIfXTableDefault.setText(Messages.get().NodePolling_Default);
-   		radioIfXTableDefault.setSelection(object.getIfXTablePolicy() == AbstractNode.IFXTABLE_DEFAULT);
+   		radioIfXTableDefault.setSelection(pollingTarget.getIfXTablePolicy() == AbstractNode.IFXTABLE_DEFAULT);
    
    		radioIfXTableEnable = new Button(ifXTableGroup, SWT.RADIO);
    		radioIfXTableEnable.setText(Messages.get().NodePolling_Enable);
-   		radioIfXTableEnable.setSelection(object.getIfXTablePolicy() == AbstractNode.IFXTABLE_ENABLED);
+   		radioIfXTableEnable.setSelection(pollingTarget.getIfXTablePolicy() == AbstractNode.IFXTABLE_ENABLED);
    
    		radioIfXTableDisable = new Button(ifXTableGroup, SWT.RADIO);
    		radioIfXTableDisable.setText(Messages.get().NodePolling_Disable);
-   		radioIfXTableDisable.setSelection(object.getIfXTablePolicy() == AbstractNode.IFXTABLE_DISABLED);
+   		radioIfXTableDisable.setSelection(pollingTarget.getIfXTablePolicy() == AbstractNode.IFXTABLE_DISABLED);
 		}
 
       /* agent cache */      
-      if (object.canHaveAgent())
+      if (pollingTarget.canHaveAgent())
       {
          Group agentCacheGroup = new Group(dialogArea, SWT.NONE);
          agentCacheGroup.setText(Messages.get().NodePolling_AgentCacheMode);
@@ -196,15 +223,15 @@ public class ObjectPolling extends PropertyPage
       
          radioAgentCacheDefault = new Button(agentCacheGroup, SWT.RADIO);
          radioAgentCacheDefault.setText(Messages.get().NodePolling_Default);
-         radioAgentCacheDefault.setSelection(object.getAgentCacheMode() == AgentCacheMode.DEFAULT);
+         radioAgentCacheDefault.setSelection(pollingTarget.getAgentCacheMode() == AgentCacheMode.DEFAULT);
    
          radioAgentCacheOn = new Button(agentCacheGroup, SWT.RADIO);
          radioAgentCacheOn.setText(Messages.get().NodePolling_On);
-         radioAgentCacheOn.setSelection(object.getAgentCacheMode() == AgentCacheMode.ON);
+         radioAgentCacheOn.setSelection(pollingTarget.getAgentCacheMode() == AgentCacheMode.ON);
    
          radioAgentCacheOff = new Button(agentCacheGroup, SWT.RADIO);
          radioAgentCacheOff.setText(Messages.get().NodePolling_Off);
-         radioAgentCacheOff.setSelection(object.getAgentCacheMode() == AgentCacheMode.OFF);
+         radioAgentCacheOff.setSelection(pollingTarget.getAgentCacheMode() == AgentCacheMode.OFF);
       }
       
       return dialogArea;
@@ -220,11 +247,11 @@ public class ObjectPolling extends PropertyPage
 	{
 		final Button button = new Button(parent, SWT.CHECK);
 		button.setText(name);
-		button.setSelection((object.getFlags() & value) != 0);
+		button.setSelection((pollingTarget.getFlags() & value) != 0);
 		flagButtons.add(button);
 		flagValues.add(value);
 	}
-	
+
 	/**
 	 * Collect new node flags from checkboxes
 	 *  
@@ -232,7 +259,7 @@ public class ObjectPolling extends PropertyPage
 	 */
 	private int collectNodeFlags()
 	{
-		int flags = object.getFlags();
+		int flags = pollingTarget.getFlags();
 		for(int i = 0; i < flagButtons.size(); i++)
 		{
 			if (flagButtons.get(i).getSelection())
@@ -297,20 +324,20 @@ public class ObjectPolling extends PropertyPage
 	 */
 	protected boolean applyChanges(final boolean isApply)
 	{
-		final NXCObjectModificationData md = new NXCObjectModificationData(object.getObjectId());
-		if(object.canHavePollerNode())
+		final NXCObjectModificationData md = new NXCObjectModificationData(pollingTarget.getObjectId());
+		if(pollingTarget.canHavePollerNode())
 		   md.setPollerNode(pollerNode.getObjectId());
 		md.setObjectFlags(collectNodeFlags(), collectNodeFlagsMask());
-		if(object.canHaveInterfaces())
+		if(pollingTarget.canHaveInterfaces())
 		   md.setIfXTablePolicy(collectIfXTablePolicy());
-		if(object.canHaveAgent())
+		if(pollingTarget.canHaveAgent())
 		   md.setAgentCacheMode(collectAgentCacheMode());
-      if (object instanceof AbstractNode)
+      if (pollingTarget instanceof AbstractNode)
          md.setRequiredPolls(pollCount.getSelection());
 		
 		if (isApply)
 			setValid(false);
-		
+
 		final NXCSession session = (NXCSession)ConsoleSharedData.getSession();
 		new ConsoleJob(Messages.get().NodePolling_JobName, null, Activator.PLUGIN_ID, null) {
 			@Override
@@ -342,8 +369,8 @@ public class ObjectPolling extends PropertyPage
 		}.start();
 		return true;
 	}
-	
-	/* (non-Javadoc)
+
+	/**
 	 * @see org.eclipse.jface.preference.PreferencePage#performApply()
 	 */
 	@Override
@@ -352,7 +379,7 @@ public class ObjectPolling extends PropertyPage
 		applyChanges(true);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.eclipse.jface.preference.PreferencePage#performOk()
 	 */
 	@Override
@@ -361,7 +388,7 @@ public class ObjectPolling extends PropertyPage
 		return applyChanges(false);
 	}
 
-   /* (non-Javadoc)
+   /**
     * @see org.eclipse.jface.preference.PreferencePage#performDefaults()
     */
    @Override
