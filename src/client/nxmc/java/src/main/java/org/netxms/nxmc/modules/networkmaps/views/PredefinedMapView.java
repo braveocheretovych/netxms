@@ -83,6 +83,7 @@ import org.netxms.nxmc.modules.networkmaps.propertypages.LinkDataSources;
 import org.netxms.nxmc.modules.networkmaps.propertypages.LinkGeneral;
 import org.netxms.nxmc.modules.networkmaps.propertypages.TextBoxGeneral;
 import org.netxms.nxmc.modules.networkmaps.views.helpers.LinkEditor;
+import org.netxms.nxmc.modules.networkmaps.widgets.helpers.MapObjectSyncer;
 import org.netxms.nxmc.modules.objects.ObjectPropertiesManager;
 import org.netxms.nxmc.modules.objects.dialogs.ObjectSelectionDialog;
 import org.netxms.nxmc.resources.ResourceManager;
@@ -120,6 +121,7 @@ public class PredefinedMapView extends AbstractNetworkMapView implements ImageUp
    private Map<Long, Boolean> readOnlyFlagsCache = new HashMap<>();
    private Set<NetworkMapElement> movedElementList = new HashSet<>();
    private Set<NetworkMapLink> changedLinkList = new HashSet<>();
+   private MapObjectSyncer mapObjectSyncer = MapObjectSyncer.getInstance();
    private int mapWidth;
    private int mapHeight;
 
@@ -187,6 +189,7 @@ public class PredefinedMapView extends AbstractNetworkMapView implements ImageUp
       Boolean cachedFlag = readOnlyFlagsCache.get(object.getObjectId());
       actionEditMode.setChecked(false);
       setEditMode(false);
+      removeResyncNodes();
       if (cachedFlag != null)
       {
          readOnly = cachedFlag;
@@ -421,6 +424,7 @@ public class PredefinedMapView extends AbstractNetworkMapView implements ImageUp
 	   {
          mapPage = new NetworkMapPage("EMPTY");   	      
 	   }
+
       refreshDciRequestList(oldMapPage);
 	}
 
@@ -433,6 +437,7 @@ public class PredefinedMapView extends AbstractNetworkMapView implements ImageUp
       NetworkMapPage page = mapObject.createMapPage(); 
       final Set<Long> mapObjectIds = new HashSet<Long>(page.getObjectIds());
 	   mapObjectIds.addAll(page.getAllLinkStatusObjects());
+	   removeResyncNodes();
 
       Job job = new Job(String.format(i18n.tr("Synchronize objects for network map %s"), getObjectName()), this) {
          @Override
@@ -445,6 +450,7 @@ public class PredefinedMapView extends AbstractNetworkMapView implements ImageUp
                {
                   if (!viewer.getControl().isDisposed())
                      refresh();
+                  mapObjectSyncer.addNodes(mapObject.getObjectId(), mapObjectIds);
                }
             });
          }
@@ -457,6 +463,18 @@ public class PredefinedMapView extends AbstractNetworkMapView implements ImageUp
       };
       job.setUser(false);
       job.start();
+	}
+	
+	/**
+	 * Remove previous map objects
+	 */
+	private void removeResyncNodes()
+	{
+	   if (mapPage == null)
+	      return;
+      final Set<Long> mapObjectIds = new HashSet<Long>(mapPage.getObjectIds());
+      mapObjectIds.addAll(mapPage.getAllLinkStatusObjects());
+      mapObjectSyncer.removeNodes(mapPage.getMapObjectId(), mapObjectIds);
 	}
 
    /**
@@ -944,6 +962,7 @@ public class PredefinedMapView extends AbstractNetworkMapView implements ImageUp
 		ImageProvider.getInstance().removeUpdateListener(this);
 		if (defaultLinkColor != null)
 			defaultLinkColor.dispose();
+		removeResyncNodes();
 		super.dispose();
 	}
 	
