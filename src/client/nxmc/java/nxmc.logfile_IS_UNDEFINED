@@ -1,0 +1,180 @@
+17:31:49.532 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Alarms" configuration: PerspectiveConfiguration [hasNavigationArea=false, multiViewNavigationArea=false, enableNavigationHistory=false, multiViewMainArea=false, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=26, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.568 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Assets" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=true, multiViewMainArea=true, hasHeaderArea=true, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=14, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.575 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Business Services" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=true, multiViewMainArea=true, hasHeaderArea=true, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=50, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.578 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Configuration" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=false, multiViewMainArea=false, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=250, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.581 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Actions
+17:31:49.583 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Agent configurations
+17:31:49.584 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Packages
+17:31:49.586 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Agent tunnels
+17:31:49.587 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element User support application notifications
+17:31:49.588 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Alarm categories
+17:31:49.589 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Asset management schema
+17:31:49.590 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Template Graphs
+17:31:49.592 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element DCI summary tables
+17:31:49.593 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Web service definitions
+17:31:49.595 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Event processing policy
+17:31:49.596 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Event templates
+17:31:49.597 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Server files
+17:31:49.599 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Image library
+17:31:49.600 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Syslog parser
+17:31:49.601 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Windows Event Log parser
+17:31:49.602 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Mapping tables
+17:31:49.603 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Persistent storage
+17:31:49.604 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Script library
+17:31:49.606 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Object categories
+17:31:49.607 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Object queries
+17:31:49.608 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Physical links
+17:31:49.610 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Object tools
+17:31:49.612 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Export configuration
+17:31:49.613 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Import configuration
+17:31:49.615 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Network credentials
+17:31:49.617 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Network discovery
+17:31:49.618 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Notification channels
+17:31:49.620 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Scheduled tasks
+17:31:49.621 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Server configuration
+17:31:49.622 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element SSH keys
+17:31:49.623 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Two-factor authentication methods
+17:31:49.625 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element SNMP MIB files
+17:31:49.627 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element SNMP traps
+17:31:49.629 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Users and groups
+17:31:49.631 [UIThread [333a50f7]] DEBUG o.n.n.b.v.ConfigurationPerspective - Adding configuration element Geographical areas
+17:31:49.636 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Dashboards" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=true, multiViewMainArea=true, hasHeaderArea=true, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=20, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.641 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Graphs" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=false, multiViewMainArea=false, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=22, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.658 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Infrastructure" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=true, multiViewMainArea=true, hasHeaderArea=true, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=10, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.661 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Logs" configuration: PerspectiveConfiguration [hasNavigationArea=false, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=100, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.663 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Maps" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=true, multiViewMainArea=true, hasHeaderArea=true, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=24, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.666 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Monitor" configuration: PerspectiveConfiguration [hasNavigationArea=false, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=110, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.672 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Network" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=true, multiViewMainArea=true, hasHeaderArea=true, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=12, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.676 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Pinboard" configuration: PerspectiveConfiguration [hasNavigationArea=false, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=false, enableViewExtraction=true, allViewsAreCloseable=true, useGlobalViewId=true, ignoreViewContext=true, enableViewHide=false, priority=255, keyboardShortcut=F12, requiredComponentId=null]
+17:31:49.679 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Reporting" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=false, multiViewMainArea=false, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=60, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.681 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Templates" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=false, enableNavigationHistory=true, multiViewMainArea=true, hasHeaderArea=true, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=16, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.683 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "Tools" configuration: PerspectiveConfiguration [hasNavigationArea=false, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=true, ignoreViewContext=true, enableViewHide=true, priority=200, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.686 [UIThread [333a50f7]] DEBUG o.n.nxmc.base.views.ToolsPerspective - Adding tools element IP Address Search
+17:31:49.687 [UIThread [333a50f7]] DEBUG o.n.nxmc.base.views.ToolsPerspective - Adding tools element MAC Address Search
+17:31:49.688 [UIThread [333a50f7]] DEBUG o.n.nxmc.base.views.ToolsPerspective - Adding tools element Find Object
+17:31:49.690 [UIThread [333a50f7]] DEBUG o.n.nxmc.base.views.ToolsPerspective - Adding tools element Server debug console
+17:31:49.691 [UIThread [333a50f7]] DEBUG o.n.nxmc.base.views.ToolsPerspective - Adding tools element World map
+17:31:49.693 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "separator" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=255, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.693 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "separator" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=255, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.693 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "separator" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=255, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.694 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "separator" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=255, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.694 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Perspective "separator" configuration: PerspectiveConfiguration [hasNavigationArea=true, multiViewNavigationArea=true, enableNavigationHistory=false, multiViewMainArea=true, hasHeaderArea=false, hasSupplementalArea=false, multiViewSupplementalArea=false, enableViewPinning=true, enableViewExtraction=true, allViewsAreCloseable=false, useGlobalViewId=false, ignoreViewContext=false, enableViewHide=true, priority=255, keyboardShortcut=null, requiredComponentId=null]
+17:31:49.697 [UIThread [333a50f7]] INFO  org.netxms.nxmc.Startup - NetXMS Management Console version 5.0.3 starting
+17:31:49.698 [UIThread [333a50f7]] INFO  org.netxms.nxmc.Startup - State directory: /home/zev/work/netxms/src/client/nxmc/java/target/tmp/state
+17:31:49.698 [UIThread [333a50f7]] INFO  org.netxms.nxmc.Startup - Registered themes: org.eclipse.rap.rwt.theme.Fallback, org.eclipse.rap.rwt.theme.Default, org.netxms.themes.light
+17:31:49.705 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.PreferenceStore - Calling preference initializer org.netxms.nxmc.base.BasePreferenceInitializer@3b283160
+17:31:49.706 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.PreferenceStore - Calling preference initializer org.netxms.nxmc.modules.networkmaps.NetworkMapPreferenceInitializer@79608b35
+17:31:49.707 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.PreferenceStore - Calling preference initializer org.netxms.nxmc.modules.charts.ChartPreferenceInitializer@27f9df15
+17:31:49.708 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.PreferenceStore - Calling preference initializer org.netxms.nxmc.modules.objects.ObjectsPreferenceInitializer@14e45c7a
+17:31:49.767 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.tools.FontTools - Loading list of available fonts
+17:31:49.768 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.tools.FontTools - Selected font Metropolis Medium
+17:31:49.768 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.tools.FontTools - Selected font Metropolis Medium
+17:31:49.788 [UIThread [333a50f7]] INFO  org.netxms.nxmc.AppPropertiesLoader - Property file nxmc.properties not found in classpath
+17:31:49.789 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.Startup - Found credentials cookie: YWRtaW5g
+17:31:49.793 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.Startup - Using stored credentials
+17:31:49.815 [UIThread [333a50f7]] INFO  org.netxms.nxmc.BrandingManager - Branding manager initialized without custom providers
+17:31:49.883 [ModalContext] INFO  org.netxms.nxmc.base.login.LoginJob - Connecting to 127.0.0.1 port 4701
+17:31:49.915 [ModalContext] INFO  org.netxms.client.NXCSession - Connecting to 127.0.0.1:4701
+17:31:49.923 [Network Message Receiver] DEBUG org.netxms.client.NXCSession - Network receiver thread started
+17:31:49.927 [ModalContext] DEBUG org.netxms.client.NXCSession - Connection established, retrieving server info
+17:31:49.957 [Network Message Receiver] DEBUG org.netxms.client.NXCSession - Cipher selected: AES-256
+17:31:49.958 [Network Message Receiver] DEBUG org.netxms.client.NXCSession - Server key fingerprint: 30:1a:23:22:76:3d:4a:03:07:54:29:4b:7a:26:0a:50
+17:31:49.963 [ModalContext] INFO  org.netxms.client.NXCSession - Connected to server version 5.0.3 (build 5.0-910-gc6da21a763)
+17:31:49.963 [ModalContext] INFO  org.netxms.client.NXCSession - Server time zone is EET+03EEST
+17:31:50.034 [ModalContext] DEBUG org.netxms.client.NXCSession - Client address provided: 127.0.0.1
+17:31:50.050 [ModalContext] DEBUG org.netxms.client.NXCSession - CMD_LOGIN_RESP received, RCC=0
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: AlarmList.DisplayLimit = 4096
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: BaseURL = https://{server-name}
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: DashboardDataExport.EnableInterpolation = 1
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: DefaultConsoleDateFormat = dd.MM.yyyy
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: DefaultConsoleShortTimeFormat = HH:mm
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: DefaultConsoleTimeFormat = HH:mm:ss
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: FirstPacketTimeout = 2000
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: KeepAliveInterval = 60
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: ListenerPort = 4701
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: MinViewRefreshInterval = 300
+17:31:50.051 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: ObjectBrowser.AutoApplyFilter = 1
+17:31:50.052 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: ObjectBrowser.FilterDelay = 300
+17:31:50.052 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: ObjectBrowser.MinFilterStringLength = 1
+17:31:50.052 [ModalContext] INFO  org.netxms.client.NXCSession - Configuration hint: TileServerURL = https://tile.netxms.org/osm/
+17:31:50.054 [ModalContext] INFO  org.netxms.client.NXCSession - Succesfully logged in, userId=1
+17:31:51.214 [Network Message Receiver] WARN  o.netxms.client.maps.NetworkMapLink - Cannot create NetworkMapLink object from XML document
+org.simpleframework.xml.core.PersistenceException: Element 'style' is already used with @org.simpleframework.xml.Element(name="", type=void.class, data=false, required=false) on field 'style' private int org.netxms.client.maps.configs.LinkConfig.style at line 3
+	at org.simpleframework.xml.core.Variable$Adapter.read(Variable.java:484)
+	at org.simpleframework.xml.core.Variable$Adapter.read(Variable.java:462)
+	at org.simpleframework.xml.core.Composite.readVariable(Composite.java:623)
+	at org.simpleframework.xml.core.Composite.readInstance(Composite.java:573)
+	at org.simpleframework.xml.core.Composite.readUnion(Composite.java:549)
+	at org.simpleframework.xml.core.Composite.readElement(Composite.java:532)
+	at org.simpleframework.xml.core.Composite.readElements(Composite.java:445)
+	at org.simpleframework.xml.core.Composite.access$400(Composite.java:59)
+	at org.simpleframework.xml.core.Composite$Builder.read(Composite.java:1383)
+	at org.simpleframework.xml.core.Composite.read(Composite.java:201)
+	at org.simpleframework.xml.core.Composite.read(Composite.java:148)
+	at org.simpleframework.xml.core.Traverser.read(Traverser.java:92)
+	at org.simpleframework.xml.core.Persister.read(Persister.java:625)
+	at org.simpleframework.xml.core.Persister.read(Persister.java:606)
+	at org.simpleframework.xml.core.Persister.read(Persister.java:584)
+	at org.simpleframework.xml.core.Persister.read(Persister.java:562)
+	at org.simpleframework.xml.core.Persister.read(Persister.java:499)
+	at org.netxms.client.xml.XMLTools.createFromXml(XMLTools.java:93)
+	at org.netxms.client.maps.NetworkMapLink.<init>(NetworkMapLink.java:173)
+	at org.netxms.client.objects.NetworkMap.<init>(NetworkMap.java:133)
+	at org.netxms.client.NXCSession.createObjectFromMessage(NXCSession.java:1606)
+	at org.netxms.client.NXCSession.access$800(NXCSession.java:229)
+	at org.netxms.client.NXCSession$ReceiverThread.run(NXCSession.java:536)
+17:31:51.216 [Network Message Receiver] DEBUG o.netxms.client.maps.NetworkMapLink - Source XML: <config>
+   <routing>0</routing>
+   <dciList length="0"/>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>   <style>3</style>
+
+   <objectStatusList class="java.util.ArrayList"/>
+</config>
+17:31:51.286 [Network Message Receiver] DEBUG org.netxms.client.NXCReceivedFile - Decompressor created for file /tmp/nxc14173266057792009703data
+17:31:52.891 [ModalContext] DEBUG org.netxms.nxmc.base.login.LoginJob - Calling login listener org.netxms.nxmc.modules.alarms.AlarmsModuleLoginListener@52c5a848
+17:31:53.007 [ModalContext] INFO  o.n.n.modules.alarms.AlarmNotifier - Received 432 alarms from server (432 outstanding)
+17:31:53.010 [ModalContext] DEBUG org.netxms.nxmc.base.login.LoginJob - Calling login listener org.netxms.nxmc.modules.worldmap.MapTilesHousekeeper@220b3fba
+17:31:53.015 [ModalContext] INFO  o.n.n.m.worldmap.MapTilesHousekeeper - Map tiles housekeeper job scheduled
+17:31:53.015 [ModalContext] INFO  org.netxms.nxmc.base.login.LoginJob - Creating keepalive timer
+17:31:53.016 [Session Keepalive Timer] INFO  o.n.nxmc.base.login.KeepAliveTimer - Session keepalive timer started
+17:31:53.017 [ModalContext] INFO  org.netxms.nxmc.base.login.LoginJob - Login job completed
+17:31:53.054 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.Startup - Dashboard=null
+17:31:53.054 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.Startup - Map=null
+17:31:53.059 [UIThread [333a50f7]] DEBUG o.n.n.m.objecttools.ObjectToolsCache - Registered object tool handler for ID="wakeup"
+17:31:53.060 [Network Message Receiver] DEBUG org.netxms.client.NXCReceivedFile - Decompressor created for file /tmp/nxc1528671427808411149data
+17:31:53.431 [UIThread [333a50f7]] DEBUG o.n.nxmc.base.windows.MainWindow - Switching to perspective Pinboard
+17:31:54.059 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Creating content for perspective Pinboard
+17:31:54.095 [UIThread [333a50f7]] DEBUG o.n.nxmc.base.windows.MainWindow - Main window activated
+17:31:54.272 [JobWorker-1] INFO  o.n.n.modules.snmp.shared.MibCache - MIB file downloaded to: /tmp/nxc1528671427808411149data (size 7739982 bytes)
+17:31:56.903 [UIThread [333a50f7]] DEBUG o.n.nxmc.base.windows.MainWindow - Switching to perspective Infrastructure
+17:31:56.903 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.Perspective - Creating content for perspective Infrastructure
+17:32:00.708 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.ViewFolder - View objects.assets is not valid for current context
+17:32:00.731 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.ViewFolder - View objects.802dot1x-status is not valid for current context
+17:32:00.736 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.ViewFolder - View objects.data-collection-summary is not valid for current context
+17:32:00.737 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.ViewFolder - View objects.status-map is not valid for current context
+17:32:00.750 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.ViewFolder - View objects.threshold-summary is not valid for current context
+17:32:00.779 [UIThread [333a50f7]] DEBUG o.netxms.nxmc.base.views.ViewFolder - View objects.nodes is not valid for current context
+17:32:19.567 [UIThread [333a50f7]] INFO  org.netxms.nxmc.Startup - Main display disposed
+17:32:19.567 [UIThread [333a50f7]] DEBUG org.netxms.client.NXCSession - Session disconnect requested (reason=2002)
+17:32:19.567 [UIThread [333a50f7]] DEBUG org.netxms.client.NXCSession - Closing TCP socket
+17:32:19.569 [UIThread [333a50f7]] DEBUG org.netxms.client.NXCSession - Waiting for receiver thread shutdown
+17:32:19.572 [Network Message Receiver] INFO  org.netxms.client.NXCSession - Network receiver thread stopped
+17:32:19.576 [UIThread [333a50f7]] DEBUG org.netxms.client.NXCSession - Waiting for housekeepeer thread shutdown
+17:32:19.930 [UIThread [333a50f7]] DEBUG org.netxms.client.NXCSession - Shutdown message wait queue
+17:32:19.930 [BackgroundOUISync] DEBUG org.netxms.client.OUICache - OUI cache worker thread stopped
+17:32:19.930 [UIThread [333a50f7]] DEBUG org.netxms.client.NXCSession - Session disconnect completed
+17:32:19.956 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.browser.infrastructure
+17:32:19.957 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.overview@0
+17:32:19.958 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.alarms@37695
+17:32:19.962 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.data-collection@0
+17:32:19.968 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.performance@0
+17:32:19.968 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - AgentFileManager@0
+17:32:19.971 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.interfaces@0
+17:32:19.983 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.software-inventory@0
+17:32:19.983 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.hardware-inventory@0
+17:32:19.983 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.asset@0
+17:32:19.986 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.processes@0
+17:32:19.991 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.user-sessions@0
+17:32:19.992 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.arp-cache@0
+17:32:19.992 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.routing-table@0
+17:32:19.992 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.physical-links@0
+17:32:19.997 [UIThread [333a50f7]] DEBUG org.netxms.nxmc.base.views.View - View disposed - objects.maintenance-journal@0
