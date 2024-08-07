@@ -24,6 +24,7 @@ import org.netxms.client.objects.AbstractObject;
 import org.netxms.client.objects.Dashboard;
 import org.netxms.nxmc.Memento;
 import org.netxms.nxmc.base.views.View;
+import org.netxms.nxmc.base.views.ViewNotRestoredException;
 import org.netxms.nxmc.resources.ResourceManager;
 
 /**
@@ -151,10 +152,11 @@ public class ContextDashboardView extends AbstractDashboardView
    }
 
    /**
+    * @throws ViewNotRestoredException 
     * @see org.netxms.nxmc.base.views.ViewWithContext#restoreState(org.netxms.nxmc.Memento)
     */
    @Override
-   public void restoreState(Memento memento)
+   public void restoreState(Memento memento) throws ViewNotRestoredException
    {
       dashboard = session.findObjectById(memento.getAsLong("dashboard", 0), Dashboard.class);
       setName(dashboard.getObjectName());

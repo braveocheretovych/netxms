@@ -107,6 +107,10 @@ public class PinboardPerspective extends Perspective
                Registry.getMainWindow().pinView(v, PinLocation.PINBOARD);
             }
          }
+         catch (ViewNotRestoredException e)
+         {
+            Registry.getMainWindow().pinView(new NotRestoredView(e), PinLocation.PINBOARD);
+         }
          catch(Exception e)
          {
             logger.error("Cannot instantiate saved view", e);

@@ -58,6 +58,7 @@ import org.netxms.nxmc.Registry;
 import org.netxms.nxmc.base.actions.RefreshAction;
 import org.netxms.nxmc.base.jobs.Job;
 import org.netxms.nxmc.base.views.View;
+import org.netxms.nxmc.base.views.ViewNotRestoredException;
 import org.netxms.nxmc.base.views.ViewWithContext;
 import org.netxms.nxmc.localization.LocalizationHelper;
 import org.netxms.nxmc.modules.charts.api.ChartType;
@@ -223,7 +224,7 @@ public class HistoricalGraphView extends ViewWithContext implements ChartConfigu
     */
    public HistoricalGraphView()
    {
-      super(LocalizationHelper.getI18n(HistoricalGraphView.class).tr("Graph"),
+      super(LocalizationHelper.getI18n(HistoricalGraphView.class).tr("Line Chart"),
             ResourceManager.getImageDescriptor("icons/object-views/chart-line.png"), UUID.randomUUID().toString(), false); // TODO:
                                                                                                                            // is
                                                                                                                            // random
@@ -1267,9 +1268,10 @@ public class HistoricalGraphView extends ViewWithContext implements ChartConfigu
    }  
 
    /**
+    * @throws ViewNotRestoredException 
     * @see org.netxms.nxmc.base.views.ViewWithContext#restoreState(org.netxms.nxmc.Memento)
     */
-   public void restoreState(Memento memento)
+   public void restoreState(Memento memento) throws ViewNotRestoredException
    {      
       super.restoreState(memento);
       objectId = memento.getAsLong("editMode", 0);
@@ -1282,7 +1284,7 @@ public class HistoricalGraphView extends ViewWithContext implements ChartConfigu
       catch(Exception e)
       {
          logger.error("Failed to load configuration", e);
-         //TODO: throw error not possbile to resotre
+         throw(new ViewNotRestoredException(fullName, i18n.tr("Failed to load configuration")));
       }
    }
 }

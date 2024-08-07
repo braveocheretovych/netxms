@@ -82,11 +82,13 @@ import org.netxms.nxmc.base.preferencepages.HttpProxyPage;
 import org.netxms.nxmc.base.preferencepages.LanguagePage;
 import org.netxms.nxmc.base.preferencepages.RegionalSettingsPage;
 import org.netxms.nxmc.base.preferencepages.ThemesPage;
+import org.netxms.nxmc.base.views.NotRestoredView;
 import org.netxms.nxmc.base.views.Perspective;
 import org.netxms.nxmc.base.views.PerspectiveSeparator;
 import org.netxms.nxmc.base.views.PinLocation;
 import org.netxms.nxmc.base.views.View;
 import org.netxms.nxmc.base.views.ViewFolder;
+import org.netxms.nxmc.base.views.ViewNotRestoredException;
 import org.netxms.nxmc.base.widgets.MessageArea;
 import org.netxms.nxmc.base.widgets.MessageAreaHolder;
 import org.netxms.nxmc.base.widgets.RoundedLabel;
@@ -552,6 +554,10 @@ public class MainWindow extends Window implements MessageAreaHolder
                v.restoreState(viewConfig);
                pinView(v, location);
             }
+         }
+         catch (ViewNotRestoredException e)
+         {
+            pinView(new NotRestoredView(e), location);
          }
          catch(Exception e)
          {

@@ -22,6 +22,7 @@ import org.netxms.client.objects.AbstractObject;
 import org.netxms.nxmc.Memento;
 import org.netxms.nxmc.Registry;
 import org.netxms.nxmc.base.views.View;
+import org.netxms.nxmc.base.views.ViewNotRestoredException;
 import org.netxms.nxmc.modules.logviewer.LogDescriptorRegistry;
 import org.netxms.nxmc.services.LogDescriptor;
 
@@ -129,10 +130,11 @@ public class ObjectLogViewer extends LogViewer
    }
 
    /**
+    * @throws ViewNotRestoredException 
     * @see org.netxms.nxmc.base.views.ViewWithContext#restoreState(org.netxms.nxmc.Memento)
     */
    @Override
-   public void restoreState(Memento memento)
+   public void restoreState(Memento memento) throws ViewNotRestoredException
    {      
       super.restoreState(memento);
       logDescriptor = Registry.getSingleton(LogDescriptorRegistry.class).get(getLogName());

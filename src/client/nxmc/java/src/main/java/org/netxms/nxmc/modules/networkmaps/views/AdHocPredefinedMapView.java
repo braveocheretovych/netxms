@@ -23,6 +23,7 @@ import org.netxms.client.objects.NetworkMap;
 import org.netxms.nxmc.Memento;
 import org.netxms.nxmc.PreferenceStore;
 import org.netxms.nxmc.base.views.View;
+import org.netxms.nxmc.base.views.ViewNotRestoredException;
 
 /**
  * Ad-hoc map view
@@ -195,10 +196,11 @@ public class AdHocPredefinedMapView extends PredefinedMapView
    }
 
    /**
+    * @throws ViewNotRestoredException 
     * @see org.netxms.nxmc.base.views.ViewWithContext#restoreState(org.netxms.nxmc.Memento)
     */
    @Override
-   public void restoreState(Memento memento)
+   public void restoreState(Memento memento) throws ViewNotRestoredException
    {      
       super.restoreState(memento);
       contextObjectId = memento.getAsLong("contextObjectId", 0);    

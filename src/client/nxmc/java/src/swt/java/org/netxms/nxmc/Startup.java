@@ -62,7 +62,9 @@ import org.netxms.nxmc.base.dialogs.ReconnectDialog;
 import org.netxms.nxmc.base.dialogs.SecurityWarningDialog;
 import org.netxms.nxmc.base.login.LoginDialog;
 import org.netxms.nxmc.base.login.LoginJob;
+import org.netxms.nxmc.base.views.NotRestoredView;
 import org.netxms.nxmc.base.views.View;
+import org.netxms.nxmc.base.views.ViewNotRestoredException;
 import org.netxms.nxmc.base.windows.MainWindow;
 import org.netxms.nxmc.base.windows.PopOutViewWindow;
 import org.netxms.nxmc.base.windows.TrayIconManager;
@@ -266,8 +268,6 @@ public class Startup
          loadPopOutViews();
       }
    }
-   
-
 
    /**
     * Load pop out views
@@ -291,6 +291,10 @@ public class Startup
                v.restoreState(viewConfig);
                   PopOutViewWindow.open(v);
             }
+         }
+         catch (ViewNotRestoredException e)
+         {
+            PopOutViewWindow.open(new NotRestoredView(e));
          }
          catch(Exception e)
          {
