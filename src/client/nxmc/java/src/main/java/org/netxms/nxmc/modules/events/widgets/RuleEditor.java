@@ -878,6 +878,12 @@ public class RuleEditor extends Composite
             {
                clabel.setText("[" + Long.toString(c.getActionId()) + "]");
             }
+            if (!c.isActive())
+            {
+               clabel = createCLabel(clientArea, 2, false);
+               clabel.addMouseListener(listener);
+               clabel.setText(i18n.tr("Inactive"));               
+            }
             if (!c.getTimerDelay().isEmpty())
             {
                clabel = createCLabel(clientArea, 2, false);
